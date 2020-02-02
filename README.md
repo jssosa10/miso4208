@@ -21,7 +21,7 @@ Para mayor detalle consulta nuestra [Wiki](https://github.com/jssosa10/miso4208/
 
 Nuestros colaboradores son cuatro estudiantes de la Universidad de los Andes
 - [x] Angela Patricia Anaya Castañeda:
-    - Estudiante MISO
+    - Estudiante MATI
     - Fortalezas en Back-end / Java 👩🏻‍💻
 - [x] Javier Alexander Perez Arevalo
     - Estudiante MATI
