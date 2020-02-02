@@ -1,5 +1,5 @@
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/logo-uniandes.png)
-# GRUPO DE PRUEBAS AUTOMÁTICAS
+# REPO DEL PROYECTO PRUEBAS AUTOMÁTICAS
 
 ![](https://img.shields.io/badge/Sprints%20planeados-5-blue)
 
@@ -11,7 +11,7 @@ Damos la bienvenida al proyecto grupal para la materia MISO4208 Pruebas Automát
 
 Este repositorio y [Wiki](https://github.com/jssosa10/miso4208/wiki) tiene propósitos académicos.
 
-## Integrantes
+# Integrantes
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/angela-bio.jpg)
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/javier-bio.jpg)
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/ramiro-bio.jpg)
@@ -31,10 +31,10 @@ Nuestros colaboradores son cuatro estudiantes de la Universidad de los Andes
     - Estudiante MISIS
     - Fortalezas en frontend 👨🏻‍💻
 
-## Proyecto
+# Proyecto
 Diseñar una aplicación que permita automatizar procesos de pruebass automáticas tanto a apps *web* como *mobile*
 
-Para validar su funcionamiento hemos seleccionados tres proyectos piloto que representan una aplicacion web y dos móviles.
+Para validar su funcionamiento hemos seleccionados tres proyectos que representan una aplicacion web y dos móviles.
 
 | TIPO | NOMBRE| REPOSITORIO |
 | :------------ |:---------------:| -----:|
