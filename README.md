@@ -11,6 +11,8 @@ Damos la bienvenida al proyecto grupal para la materia MISO4208 Pruebas Automát
 
 Este repositorio y [Wiki](https://github.com/jssosa10/miso4208/wiki) tiene propósitos académicos.
 
+Para mayor detalle consulta nuestra [Wiki](https://github.com/jssosa10/miso4208/wiki)
+
 # Integrantes
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/angela-bio.jpg)
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/javier-bio.jpg)
@@ -39,8 +41,8 @@ Para validar su funcionamiento hemos seleccionados tres proyectos que representa
 | TIPO | NOMBRE| REPOSITORIO |
 | :------------ |:---------------:| -----:|
 | Web | Ghost	| https://github.com/TryGhost/Ghost |
-| Móvil |	MyExpenses |	https://github.com/mtotschnig/MyExpenses |
-| Móvil |	kouchat |	https://github.com/blurpy/kouchat-android |
+| Móvil | kouchat |	https://github.com/blurpy/kouchat-android |
+| Móvil | MyExpenses | https://github.com/mtotschnig/MyExpenses |
 
 El proyecto esta estimado a ejecutarse en 5 Sprints (cada Sprint se conforma de 3 MicroSprint) los cuales podras validar en la [Wiki](https://github.com/jssosa10/miso4208/wiki) del repositorio.
 
