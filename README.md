@@ -1,16 +1,46 @@
 ![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/logo-uniandes.png)
 # GRUPO DE PRUEBAS AUTOMÁTICAS
 
+![](https://img.shields.io/badge/Sprints%20planeados-5-blue)
+
+![](https://img.shields.io/badge/Sprint%20actual-1-green)
+![](https://img.shields.io/badge/MicroSprint-1%20de%203-green)
+
+
 Damos la bienvenida al proyecto grupal para la materia MISO4208 Pruebas Automáticas 2020-1!
-Este repositorio tiene propósitos académicos.
 
-# Integrantes
+Este repositorio y [Wiki](https://github.com/jssosa10/miso4208/wiki) tiene propósitos académicos.
+
+## Integrantes
+![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/angela-bio.jpg)
+![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/javier-bio.jpg)
+![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/ramiro-bio.jpg)
+![](https://raw.github.com/jssosa10/miso4208/master/src/common/images/juan-bio.jpg)
+
 Nuestros colaboradores son cuatro estudiantes de la Universidad de los Andes
-- [x] Angela Patricia Anaya Castañeda
+- [x] Angela Patricia Anaya Castañeda:
+    - Estudiante MISO
+    - Fortalezas en Back-end / Java 👩🏻‍💻
 - [x] Javier Alexander Perez Arevalo
+    - Estudiante MATI
+    - Fortalezas en Android / Java 👨🏻‍💻
 - [x] Ramiro Vargas Salas
+    - Estudiante MISO
+    - Fortalezas en Back-end / Java 👨🏻‍💻
 - [x] Juan Sebastian Sosa
+    - Estudiante MISIS
+    - Fortalezas en frontend 👨🏻‍💻
 
-# Proyecto
-Buscamos desarrollar un ejecutable que permita a un tester disparar pruebas automáticas tanto a aplicaciones web como móviles.
+## Proyecto
+Diseñar una aplicación que permita automatizar procesos de pruebass automáticas tanto a apps *web* como *mobile*
+
 Para validar su funcionamiento hemos seleccionados tres proyectos piloto que representan una aplicacion web y dos móviles.
+
+| TIPO | NOMBRE| REPOSITORIO |
+| :------------ |:---------------:| -----:|
+| Web | Ghost	| https://github.com/TryGhost/Ghost |
+| Móvil |	MyExpenses |	https://github.com/mtotschnig/MyExpenses |
+| Móvil |	kouchat |	https://github.com/blurpy/kouchat-android |
+
+El proyecto esta estimado a ejecutarse en 5 Sprints (cada Sprint se conforma de 3 MicroSprint) los cuales podras validar en la [Wiki](https://github.com/jssosa10/miso4208/wiki) del repositorio.
+
