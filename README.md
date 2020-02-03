@@ -40,6 +40,8 @@ Nuestros colaboradores son cuatro estudiantes de la Universidad de los Andes
 # Proyecto
 Diseñar una aplicación que permita automatizar procesos de pruebass automáticas tanto a apps *web* como *mobile*
 
+El proyecto esta estimado a ejecutarse en 5 Sprints (cada Sprint se conforma de 3 MicroSprint) los cuales podras validar en la [Wiki](https://github.com/jssosa10/miso4208/wiki) del repositorio.
+
 Para validar su funcionamiento hemos seleccionados tres proyectos que representan una aplicacion web y dos móviles.
 
 | TIPO | NOMBRE| REPOSITORIO |
@@ -48,5 +50,5 @@ Para validar su funcionamiento hemos seleccionados tres proyectos que representa
 | Móvil | kouchat |	https://github.com/blurpy/kouchat-android |
 | Móvil | MyExpenses | https://github.com/mtotschnig/MyExpenses |
 
-El proyecto esta estimado a ejecutarse en 5 Sprints (cada Sprint se conforma de 3 MicroSprint) los cuales podras validar en la [Wiki](https://github.com/jssosa10/miso4208/wiki) del repositorio.
+
 
