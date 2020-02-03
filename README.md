@@ -21,17 +21,21 @@ Para mayor detalle consulta nuestra [Wiki](https://github.com/jssosa10/miso4208/
 
 Nuestros colaboradores son cuatro estudiantes de la Universidad de los Andes
 - [x] Angela Patricia Anaya Castañeda:
-    - Estudiante MATI
+    - Estudiante MATI - 201510682
     - Fortalezas en Back-end / Java 👩🏻‍💻
+    - ap.anaya10@uniandes.edu.co
 - [x] Javier Alexander Perez Arevalo
-    - Estudiante MATI
+    - Estudiante MATI - 201811140
     - Fortalezas en Android / Java 👨🏻‍💻
+    - ja.pereza@uniandes.edu.co
 - [x] Ramiro Vargas Salas
-    - Estudiante MISO
+    - Estudiante MISO - 201910642
     - Fortalezas en Back-end / Java 👨🏻‍💻
+    - r.vargas@uniandes.edu.co
 - [x] Juan Sebastian Sosa
-    - Estudiante MISIS
+    - Estudiante MISIS - 201425255
     - Fortalezas en frontend 👨🏻‍💻
+    - js.sosa10@uniandes.edu.co
 
 # Proyecto
 Diseñar una aplicación que permita automatizar procesos de pruebass automáticas tanto a apps *web* como *mobile*
