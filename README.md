@@ -3,9 +3,9 @@
 
 ![](https://img.shields.io/badge/Sprints%20planeados-5-blue)
 
-![](https://img.shields.io/badge/Sprint%20actual-1-green)
-![](https://img.shields.io/badge/MicroSprint-3%20de%203-green)
-![](https://img.shields.io/badge/Bitácora-14/02/2020-purple)
+![](https://img.shields.io/badge/Sprint%20actual-2-green)
+![](https://img.shields.io/badge/MicroSprint-1%20de%203-green)
+![](https://img.shields.io/badge/Bitácora-15/02/2020-purple)
 
 Damos la bienvenida al proyecto grupal para la materia MISO4208 Pruebas Automáticas 2020-1!
 
