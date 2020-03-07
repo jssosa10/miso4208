@@ -1,20 +1,33 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
-var app = express();
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
 
+const uploadRouter = require('./routes/upload');
+const appsRouter = require('./routes/apps');
+const e2eRouter = require('./routes/e2e');
+const rtRouter = require('./routes/rt');
+
+const app = express();
+
+app.use(cors());
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({ extented: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/upload', uploadRouter);
+app.use('/apps', appsRouter);
+app.use('/e2e', e2eRouter);
+app.use('/rt', rtRouter);
+
+//app.use('/e2e', e2eRouter);
+//app.use('/rt', rtRouter);
 
 module.exports = app;
