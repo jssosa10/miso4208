@@ -4,7 +4,7 @@ const child_process = require('child_process');
 async function run() {
   const sock = new zmq.Subscriber
 
-  sock.connect("tcp://127.0.0.1:3000");
+  sock.connect("tcp://127.0.0.1:3006");
   sock.subscribe("RTW");
 
   for await (const [topic, msg] of sock) {
