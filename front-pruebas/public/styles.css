@@ -1,0 +1,47 @@
+.complete{
+   width: 100%;
+}
+.half{
+    width: 50%;
+}
+.Third{
+    width: 33%;
+}
+.column{
+	height: 70vh;
+	padding: 2em;
+	overflow-y: scroll;
+}
+.border{
+    border: 3px solid gray;
+    height: 75%;
+    overflow-y: scroll;
+	flex:1
+}
+.root{
+	min-height:60vh;
+}
+#root{
+	min-height:60vh;
+}
+.rr{
+	float: right;
+}
+
+
+*{
+	font-family: Montserrat;
+}
+
+
+
+#main_navigation ul 
+    {display:table;
+    width:100%;}
+#main_navigation ul li {
+    list-style-type: none;
+    display: table-cell;
+
+}
+
+

@@ -10,6 +10,8 @@ const logger = require('morgan');
 
 const uploadRouter = require('./routes/upload');
 const appsRouter = require('./routes/apps');
+const estrategiasRouter = require('./routes/estrategias');
+const dispositivosRouter = require('./routes/dispositivos');
 const e2eRouter = require('./routes/e2e');
 const rtRouter = require('./routes/rt');
 const BDTRouter = require('./routes/bdt');
@@ -28,6 +30,8 @@ app.use('/apps', appsRouter);
 app.use('/e2e', e2eRouter);
 app.use('/rt', rtRouter);
 app.use('/bdt', BDTRouter);
+app.use('/estrategias', estrategiasRouter);
+app.use('/dispositivos', dispositivosRouter);
 
 //app.use('/e2e', e2eRouter);
 //app.use('/rt', rtRouter);

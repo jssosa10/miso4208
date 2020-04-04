@@ -11,9 +11,10 @@ const pool = mysql.createPool({
 });
 
 
-router.get('/', (req, res) => {
+router.get('/:appId', (req, res) => {
+    const appId = req.params.appId;
     try{
-            pool.query('SELECT id, name, description FROM apps', (err, rows, fields) => {
+            pool.query('SELECT id, name FROM estrategias WHERE idApp='+appId+';', (err, rows, fields) => {
             if(err)
                 throw err;
             res.send(rows);
@@ -24,9 +25,10 @@ router.get('/', (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
+router.post('/:appId', (req, res) => {
+    const appId = req.params.appId;
     try{
-        pool.query('INSERT INTO  apps (name, description) VALUES ("Untitled", "")', (err, rows) => {
+        pool.query('INSERT INTO  estrategias (name, idApp) VALUES ("Untitled",'+appId+')', (err, rows) => {
             if(err)
                 throw err;
             res.send(rows);
@@ -41,7 +43,7 @@ router.put('/:id/:name', (req, res) => {
     const id = req.params.id;
     const name = req.params.name;
     try{
-        pool.query('UPDATE apps SET name = "' + name + '" WHERE id = '+id+';', (err) => {
+        pool.query('UPDATE estrategias SET name = "' + name + '" WHERE id = '+id+';', (err) => {
             if(err)
                 throw err;
             res.send("ok");
@@ -52,10 +54,10 @@ router.put('/:id/:name', (req, res) => {
     }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/one/:id', (req, res) => {
     const id = req.params.id;
     try{
-        pool.query('SELECT * from apps WHERE id = '+id+';', (err, rows) => {
+        pool.query('SELECT * from estrategias WHERE id = '+id+';', (err, rows) => {
             if(err)
                 throw err;
             res.send(rows);
@@ -69,7 +71,7 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
     try{
-        pool.query('DELETE FROM apps WHERE id = '+id+';', (err) => {
+        pool.query('DELETE FROM estrategias WHERE id = '+id+';', (err) => {
             if(err)
                 throw err;
             res.send("ok");

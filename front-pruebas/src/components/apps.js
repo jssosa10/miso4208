@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Grid from '@material-ui/core/Grid'
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
+import "./Apps.css";
 
 
-const API_APPS = "http://localhost:3000/apps";
+const API_APPS = "http://localhost:3003/apps";
 
 function Apps(props) {
     const [apps, setApps] = useState([]);
@@ -30,7 +26,6 @@ function Apps(props) {
       res
         .json()
         .then(res => {
-          console.log(res);
           setUpdates(updates+1);
         })
     };
@@ -43,34 +38,29 @@ function Apps(props) {
     }, [props, updates]);
 
     const create_app = app =>  { return(
-      <ExpansionPanel key = {app.id}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          id={app.id}
-        >
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs>
-    <h3>{app.name}</h3>
-            </Grid>
-            <Grid item xs>
-              <Fab variant="contained" color="secondary" onClick={() => props.handleChange(app)}>
+      <li>
+        <span>
+          <h3>{app.name}</h3>
+            <Fab variant="contained" color="secondary" onClick={() => props.handleChange(app.id)}>
               <EditIcon />
-              </Fab>
-            </Grid>
-          </Grid>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          {app.description}
-        </ExpansionPanelDetails>
-      </ExpansionPanel>)
+            </Fab>
+        </span>
+      </li>)
     };
 
     return(
-        <div>
-          {apps.map(app => create_app(app))}
-          <Fab variant="contained" color="primary" onClick = {createApp} >
-              <AddIcon />
-          </Fab>
+        <div className="apps">
+          <h1>Aplicaciones</h1>
+          <div className="column">
+          <ul>
+            {apps.map(app => create_app(app))}
+          </ul>
+          </div>
+          <div className="rr">
+            <Fab variant="contained" color="primary" onClick = {createApp} >
+                <AddIcon />
+            </Fab>
+          </div>
         </div>
     );
 
