@@ -41,7 +41,7 @@
 #main_navigation ul li {
     list-style-type: none;
     display: table-cell;
-
+    padding: 2em;
 }
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-const API_APPS = "http://localhost:3003/dispositivos/";
+const API_APPS = "http://localhost:9000/dispositivos/";
 
 function Dispositivos(props){
     const [dispositivos, setDispositivos] = useState([]);
@@ -21,7 +21,7 @@ function Dispositivos(props){
     }, [props, updates]);
 
     const create_dispositivo = dispositivo =>  { return(
-        <li>
+        <li key  = {dispositivo.id}>
             <label><input type="checkbox" /> {dispositivo.name}</label>
         </li>)
     };

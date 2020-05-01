@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import EditableName from './editableName';
+import contentEditable from './contentEditable';
 import Versiones from './versiones';
 import Pruebas from './pruebas';
 import Dispositivos from './dispositivos';
 
-const API_APPS = "http://localhost:3003/estrategias/one/";
+const API_APPS = "http://localhost:9000/estrategias/";
 
 function Estrategia(props){
     const [estrategia, setEstrategia] = useState({});
@@ -12,7 +12,7 @@ function Estrategia(props){
 
     async function fetchData() {
         console.log("el appid = "+props.id);
-        const res = await fetch(API_APPS+props.id);
+        const res = await fetch(API_APPS+"one/"+props.id);
         res
           .json()
           .then(res => {setEstrategia(res[0])});
@@ -22,13 +22,23 @@ function Estrategia(props){
         fetchData();
     }, [props, updates]);
 
-    const changeName = (newName)=>{
-        setEstrategia({name: newName})
+
+    async function update_name(id, name) {
+        const res = await fetch(API_APPS+"/"+id+"/"+name, {
+          method: 'PUT',
+        }).then(d => {
+         console.log(d);
+        });
+    }
+
+    const EditableName = contentEditable('h1');
+    const save = (new_name) => {
+        update_name(props.id, new_name);
     }
 
     return(
         <div className="centrado">
-            <EditableName changeName={changeName} name={estrategia.name} />
+            <EditableName onSave={save} value={estrategia.name} />
             <div  style={{display: 'flex',alignItems: 'stretch', width: '100%',minHeight:'100%'}}>
 					{typeof estrategia.id === 'undefined'?<span />:<Pruebas EstrategiaId={estrategia.id} />}
                     {typeof estrategia.id === 'undefined'?<span/ >:<Dispositivos tipo={estrategia.web} />}

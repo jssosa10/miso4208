@@ -5,7 +5,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 
 
-const API_APPS = "http://localhost:3003/estrategias/";
+const API_APPS = "http://localhost:9000/pruebas/";
 
 function Pruebas(props){
     const [estrategias, setEstrategias] = useState([]);
@@ -28,7 +28,7 @@ function Pruebas(props){
         <li>
           <span>
             <h3>{estrategia.name}</h3>
-              <Fab variant="contained" color="secondary" onClick={() => console.log("ok")}>
+              <Fab  color="secondary" onClick={() => console.log("ok")}>
                 <EditIcon />
               </Fab>
           </span>
@@ -37,14 +37,14 @@ function Pruebas(props){
     return(
         
         <div className="half">
-            <h2>Estrategias</h2>
+            <h2>Pruebas</h2>
             <div className="border">
             <ul>
                 {estrategias.map(estrategia => create_estrategia(estrategia))}
             </ul>
             </div>
             <div className="rr">
-                <Fab variant="contained" color="primary" onClick = {console.log("Agregar")} >
+                <Fab color="primary" onClick = {console.log("Agregar")} >
                     <AddIcon />
                 </Fab>
             </div>

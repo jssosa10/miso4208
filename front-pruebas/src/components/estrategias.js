@@ -5,7 +5,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 
 
-const API_APPS = "http://localhost:3003/estrategias/";
+const API_APPS = "http://localhost:9000/estrategias/";
 
 function Estrategias(props){
     const [estrategias, setEstrategias] = useState([]);
@@ -25,10 +25,10 @@ function Estrategias(props){
     }, [props, updates]);
 
     const create_estrategia = estrategia =>  { return(
-        <li>
+        <li key = {estrategia.id}>
           <span>
             <h3>{estrategia.name}</h3>
-              <Fab variant="contained" color="secondary" onClick={() => props.handleChange(estrategia.id)}>
+              <Fab color="secondary" onClick={() => props.handleChange(estrategia.id)}>
                 <EditIcon />
               </Fab>
           </span>
@@ -44,7 +44,7 @@ function Estrategias(props){
             </ul>
             </div>
             <div className="rr">
-                <Fab variant="contained" color="primary" onClick = {console.log("Agregar")} >
+                <Fab color="primary" onClick = {console.log("Agregar")} >
                     <AddIcon />
                 </Fab>
             </div>
