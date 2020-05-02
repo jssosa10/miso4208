@@ -1,9 +1,14 @@
 describe('Monkey web', function () {
     it('Monkey web recursivo de x eventos', function () {
-        cy.visit('https://losestudiantes.co');//AQUI SE APUNTA AL URL DEL WEB A HACER RAMDOM
-        cy.contains('Cerrar').click();
-        cy.wait(1000);
-        randomEvent(10);//CANTIDAD DE EVENTOS
+        //cy.visit('https://losestudiantes.co');//AQUI SE APUNTA AL URL DEL WEB A HACER RANDOM
+        //cy.contains('Cerrar').click();
+        cy.visit('http://localhost:2368/ghost/#/signin'); //AQUI SE APUNTA AL URL DEL WEB A HACER RANDOM
+        cy.get('.gh-signin').find('input[name="identification"]').click().type("angela.anaya.castaneda@gmail.com");
+        cy.get('.gh-signin').find('input[name="password"]').click().type("juanda2309");
+        cy.get('.gh-signin').contains('Sign in').click();
+        cy.wait(3000)
+        Cypress.Cookies.preserveOnce('session_id','remember_token');
+        randomEvent(50);//CANTIDAD DE EVENTOS
     })
 })
 
