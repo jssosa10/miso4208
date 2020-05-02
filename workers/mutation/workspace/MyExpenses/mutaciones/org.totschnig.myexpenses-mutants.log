@@ -1,0 +1,2 @@
+Mutant 1: mutation/workspace/MyExpenses/mutaciones/\org.totschnig.myexpenses-mutant1\\AndroidManifest.xml; ActivityNotDefined in line 64
+Mutant 2: mutation/workspace/MyExpenses/mutaciones/\org.totschnig.myexpenses-mutant2\\AndroidManifest.xml; ActivityNotDefined in line 79
