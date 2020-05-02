@@ -11,7 +11,7 @@ async function run() {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     //Se deve primero hacer mvn clean y luego mvn build a "mutation\MDroidPlus\" para que construya el jar MDROIDPlus-1.0.0.jar
+     //Se debe primero hacer mvn clean y luego mvn package parado en "mutation\MDroidPlus\" para que construya el jar MDROIDPlus-1.0.0.jar
      var workerProcess = child_process.exec('java -jar mutation\MDroidPlus\target\MDroidPlus-1.0.0.jar mutation\MDroidPlus\libs4ast\ mutation\workspace\MyExpenses\myExpenses\src\main\ org.totschnig.myexpenses mutation\workspace\MyExpenses\mutaciones mutation\MDroidPlus\ false',  
      function (error, stdout, stderr) {  
          if (error) {  
