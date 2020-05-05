@@ -11,7 +11,7 @@ async function run() {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     var workerProcess = child_process.exec('cd /home/jssosa10/uploads && npx cypress run --spec "'+ data.app+'_'+data.version+'_e2e.spec.js" > '+ data.resultPath + data.app+'_'+data.version+'_e2e_'+ Date.now()+'.txt',  
+     var workerProcess = child_process.exec('cd /home/uploads && npx cypress run --spec '+ data.app+'_'+data.version+'_e2e.spec.js > '+ data.app+'_'+data.version+'_e2e_'+ Date.now()+'.txt',  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  

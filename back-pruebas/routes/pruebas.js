@@ -11,9 +11,10 @@ const pool = mysql.createPool({
 });
 
 
-router.get('/', (req, res) => {
+router.get('/:appId', (req, res) => {
+    const appId = req.params.appId;
     try{
-            pool.query('SELECT id, name, description FROM apps', (err, rows, fields) => {
+            pool.query('SELECT id, name FROM pruebas WHERE idEstrategia='+appId+';', (err, rows, fields) => {
             if(err)
                 throw err;
             res.send(rows);
@@ -24,9 +25,10 @@ router.get('/', (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
+router.post('/:appId', (req, res) => {
+    const appId = req.params.appId;
     try{
-        pool.query('INSERT INTO  apps (name, description) VALUES ("Untitled", "")', (err, rows) => {
+        pool.query('INSERT INTO  pruebas (name, idEstrategia) VALUES ("Untitled",'+appId+')', (err, rows) => {
             if(err)
                 throw err;
             res.send(rows);
@@ -37,11 +39,12 @@ router.post('/', (req, res) => {
     }
 });
 
-router.put('/:id/:name', (req, res) => {
+router.put('/:id', (req, res) => {
     const id = req.params.id;
-    const name = req.params.name;
+    const body = req.body;
+    const query = `UPDATE pruebas SET name = '${body.name}', tipo = '${body.tipo}' WHERE id = ${id};`
     try{
-        pool.query('UPDATE apps SET name = "' + name + '" WHERE id = '+id+';', (err) => {
+        pool.query(query, (err) => {
             if(err)
                 throw err;
             res.send("ok");
@@ -52,25 +55,10 @@ router.put('/:id/:name', (req, res) => {
     }
 });
 
-router.put('/tipo/:id/:tipo', (req, res) => {
-    const id = req.params.id;
-    const tipo = req.params.tipo;
-    try{
-        pool.query('UPDATE apps SET tipo = "' + tipo + '" WHERE id = '+id+';', (err) => {
-            if(err)
-                throw err;
-            res.send("ok");
-        });
-    } catch(error) {
-        console.log(error);
-        res.send(400);
-    }
-});
-
-router.get('/:id', (req, res) => {
+router.get('/one/:id', (req, res) => {
     const id = req.params.id;
     try{
-        pool.query('SELECT * from apps WHERE id = '+id+';', (err, rows) => {
+        pool.query('SELECT * from pruebas WHERE id = '+id+';', (err, rows) => {
             if(err)
                 throw err;
             res.send(rows);
@@ -84,7 +72,7 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
     try{
-        pool.query('DELETE FROM apps WHERE id = '+id+';', (err) => {
+        pool.query('DELETE FROM pruebas WHERE id = '+id+';', (err) => {
             if(err)
                 throw err;
             res.send("ok");

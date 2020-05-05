@@ -11,6 +11,7 @@ const API_APPS = "http://localhost:9000/apps";
 
 function Apps(props) {
     const [apps, setApps] = useState([]);
+    const [hovered, setHovered] = useState(-1);
     const [updates, setUpdates] = useState(0);
 
     async function fetchData() {
@@ -28,46 +29,48 @@ function Apps(props) {
       res
         .json()
         .then(res => {
+          //console.log(res);
           setUpdates(updates+1);
+          props.handleChange(res.insertId);
         })
     };
+
+    // async function delete
 
     const createApp = () => {
       postData();
     };
+
+
+    
     useEffect(() => {
         fetchData();
     }, [props, updates]);
+    const create_app = app =>  { 
+      const style = {cursor:(app.id===hovered?'pointer':''),backgroundColor:(app.id===hovered?'#DCE1E8':'white')}
+      return(
+      <Grid item key = {app.id} xs={12}>
+        <Paper style= {style} elevation={2} onMouseEnter={()=>setHovered(app.id)} onMouseLeave={()=>setHovered(-1)}>
 
-    const create_app = app =>  { return(
-      <li key = {app.id}>
-        <Paper elevation={2}>
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="center"
-          spacing={3}>
-          <Grid item><h3>{app.name}</h3></Grid>
-          <Grid item>
-            <Fab size="small" color="secondary" onClick={() => props.handleChange(app.id)}>
-              <EditIcon />
-            </Fab>
-          </Grid>
-        </Grid>
+          <h3 style={{padding:"20px"}} onClick={() => props.handleChange(app.id)}>{app.name}</h3>
+        
         </Paper>
-      </li>)
+      </Grid>)
     };
-
+    const style = {
+      padding: '1em',
+      overflowY: 'scroll'}
     return(
-        <div className="apps">
-          <h1>Aplicaciones</h1>
-          <div className="column">
-          <ul>
+        <div style={{textAlign:'center'}}>
+          <h1 >Aplicaciones</h1>
+          <div className='column'>
+          <Grid
+            container
+            direction="column">
             {apps.map(app => create_app(app))}
-          </ul>
+          </Grid>
           </div>
-          <div className="rr">
+          <div style={{textAlign:"center", margin:"10px"}}>
             <Fab  color="primary" onClick = {createApp} >
                 <AddIcon />
             </Fab>

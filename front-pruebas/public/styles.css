@@ -9,12 +9,11 @@
 }
 .column{
 	height: 70vh;
-	padding: 2em;
+	padding: 1em;
 	overflow-y: scroll;
 }
 .border{
-    border: 3px solid gray;
-    height: 75%;
+    height: 55vh;
     overflow-y: scroll;
 	flex:1
 }
@@ -26,6 +25,11 @@
 }
 .rr{
 	float: right;
+}
+
+.HoverGrid{
+    color: white;
+    :hover{color: #ed1212;}
 }
 
 

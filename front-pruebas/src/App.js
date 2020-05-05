@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import DocumentTitle from 'react-document-title';
 import Typography from '@material-ui/core/Typography';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 function App() {
   const classes = useStyles();

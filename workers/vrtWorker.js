@@ -18,7 +18,7 @@ async function run() {
   for await (const [topic, msg] of sock) {
      json = msg.toString();
      data = JSON.parse(msg)
-     for (x of data){
+     for (let x of data){
          regression(x);
      }
 

@@ -3,40 +3,41 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField  from '@material-ui/core/TextField';
 
 
-const API_APPS = "http://localhost:9000/versiones";
-const API_UPLOAD = "http://localhost:9000/upload/apk";
+const API_APPS = "http://localhost:9000/pruebas";
+const API_UPLOAD = "http://localhost:9000/upload/script";
 
-function Version(props){
+function Prueba(props){
     const [name, setName] = useState("");
-    const [link, setLink] = useState("");
+    const [tipo, setTipo] = useState(-1);
     const [file, setFile] = useState({});
 
-    const open = props.version!==0;
+    const open = props.prueba!==0;
 
     async function fetchData() {
-      const res = await fetch(API_APPS+'/one/'+props.version);
+      const res = await fetch(API_APPS+'/one/'+props.prueba);
       res
         .json()
-        .then(res => {console.log(res);setName(res[0].nombre)});
+        .then(res => {console.log(res);setName(res[0].name);setTipo(res[0].tipo)});
      }
 
     useEffect(() => {
       fetchData();
     }, [props]);
     
-
     const create_body = () => {
       return JSON.stringify(
         {
           "name": name,
-          "link": link
+          "tipo": tipo
         }
       );
     }
     async function update() {
-      const res = await fetch(API_APPS+"/"+props.version, {
+      const res = await fetch(API_APPS+"/"+props.prueba, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: create_body()
@@ -45,19 +46,19 @@ function Version(props){
       });
     }
     async function upload(){
-      const data = new FormData();
-      data.append('apk', file);
-      const res = await fetch(API_UPLOAD+`?app=${props.name}&version=${name}&type=mobile`, {
-        method: 'POST',
-        body: data
-      }).then(d => {
-        console.log(d);
-      })
+       const data = new FormData();
+       data.append('script', file);
+       const res = await fetch(API_UPLOAD+`?app=${props.name}&version=${name}&type=e2e`, {
+         method: 'POST',
+         body: data
+       }).then(d => {
+         console.log(d);
+       })
     }
 
 
   async function deleteData() {
-    const res = await fetch(API_APPS+"/"+props.version, {
+    const res = await fetch(API_APPS+"/"+props.prueba, {
       method: 'DELETE'
     }).then(res => {
         //console.log(res);
@@ -65,54 +66,39 @@ function Version(props){
       })
   };
 
-    const web = () => {
-      return (
-        <form>
-        <label>
-          Nombre:
-          <input type="text" value={name} onChange={updateName}/>
-        </label>
-        <label>
-          Enlace:
-          <input type="text" onChange={updateLink}/>
-        </label>
-        </form>
-      );
-    }
-
     const updateName = (event) =>{
       setName(event.target.value);
       console.log(event.target.value);
     }
-    const updateLink = (event)=>{
-      setLink(event.target.value);
-    }
 
-    const deleteV = ()=>{
+    const deleteP = ()=>{
       deleteData();
     }
 
     const save = ()=>{
-      if(web!==1){
-        upload();
-      }
+      upload();
       update();
       props.close();
     }
 
-    const mobile = () => {
+    const form = () => {
       return(
       <form>
         <label>
           Nombre:
           <input type="text" value={name} onChange={updateName}/>
         </label>
+        <Autocomplete
+            id="combo-box-demo"
+            //value={tiposPruebas.filter(v=>v.id===tipo)[0].name}
+            options={tiposPruebas}
+            getOptionLabel={(option) => option.name}
+            style={{ width: 300 }}
+            onChange={(e, v) => { setTipo(v.id) }}
+            renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+        />
         <label>
-          Enlace:
-          <input type="text" onChange={updateLink} />
-        </label>
-        <label>
-          APK:
+          File:
           <input type="file" onChange={(ev)=>{setFile(ev.target.files[0])}}/>
         </label>
         </form>)
@@ -120,16 +106,24 @@ function Version(props){
 
     return (
       <Dialog aria-labelledby="simple-dialog-title" open={open}>
-        <DialogTitle id="simple-dialog-title">Editar Versión</DialogTitle>
+        <DialogTitle id="simple-dialog-title">Editar Prueba</DialogTitle>
         <div>
-        {props.web===1?web():mobile()}
+        {form()}
         <Button variant="contained" color="primary" onClick={save}>Guardar</Button>
         <Button variant="contained" color="secondary" onClick={props.close}>Salir</Button>
-        <Button variant="contained" color="secondary" onClick={()=>{deleteV();props.close()}}>Borrar</Button>
+        <Button variant="contained" color="secondary" onClick={()=>{deleteP();props.close()}}>Borrar</Button>
         </div>
         
       </Dialog>
     );
-}
 
-export default Version;
+   
+}
+const tiposPruebas = [
+    {id:0, name: "Random"},
+    {id:1, name: "E2E"},
+    {id:2, name: "BDT"},
+    {id:3, name: "Mutation"}
+]
+
+export default Prueba;

@@ -4,17 +4,17 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-const API_APPS = "http://localhost:9000/dispositivos/";
+const API_APPS = "http://localhost:9000/versiones/";
 
-function Dispositivos(props){
-    const [dispositivos, setDispositivos] = useState([]);
+function VersionesList(props){
+    const [versiones, setDispositivos] = useState([]);
     const [updates, setUpdates] = useState(0);
     const [checked, setChecked]  = useState([])
     const [using, setUsing] = useState([]);
 
     async function fetchData() {
         console.log(props.tipo);
-        const res = await fetch(API_APPS+props.tipo);
+        const res = await fetch(API_APPS+props.appId);
         res
         //console.log(res);
           .json()
@@ -25,48 +25,48 @@ function Dispositivos(props){
         fetchData();
     }, [props, updates]);
 
-    const sacar = (dispositivo)=>{
-        let filterDisp = using.filter((disp)=>disp.id!==dispositivo.id);
-        let filterCheck = checked.filter((val)=>val!==dispositivo.id);
+    const sacar = (version)=>{
+        let filterDisp = using.filter((disp)=>disp.id!==version.id);
+        let filterCheck = checked.filter((val)=>val!==version.id);
         setChecked([...filterCheck]);
         setUsing([...filterDisp]);
         props.update([...filterDisp]);
     }
-    const meter = (dispositivo)=>{
-        using.push(dispositivo);
-        checked.push(dispositivo.id);
+    const meter = (version)=>{
+        using.push(version);
+        checked.push(version.id);
         setChecked([...checked]);
         setUsing([...using]);
         props.update([...using]);
         console.log(checked);
     }
 
-    const updates_lista = (dispositivo)=>{
-        let inLista = checked.indexOf(dispositivo.id);
+    const updates_lista = (version)=>{
+        let inLista = checked.indexOf(version.id);
         console.log(inLista);
         if(inLista!==-1){
-            sacar(dispositivo);
+            sacar(version);
         }
         else{
-            meter(dispositivo);
+            meter(version);
         }
     }
 
-    const create_dispositivo = dispositivo =>  { return(
+    const create_dispositivo = version =>  { return(
         <FormControlLabel
-            control={<Checkbox checked={checked.indexOf(dispositivo.id)!==-1} onChange={(ev)=>updates_lista(dispositivo)}/>}
-            label={dispositivo.name}
+            control={<Checkbox checked={checked.indexOf(version.id)!==-1} onChange={(ev)=>updates_lista(version)}/>}
+            label={version.nombre}
         />)
     };
     return(
         
         <div>
             <Paper>
-            <h2>Dispositivos</h2>
+            <h2>versiones</h2>
             <div className="border">
             <FormControl component="fieldset">
                 <FormGroup>
-                {dispositivos.map(dispositivo => create_dispositivo(dispositivo))}
+                {versiones.map(version => create_dispositivo(version))}
              </FormGroup>
             </FormControl>
             </div>
@@ -76,4 +76,4 @@ function Dispositivos(props){
     );
 }
 
-export default Dispositivos;
+export default VersionesList;

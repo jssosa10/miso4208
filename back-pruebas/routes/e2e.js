@@ -6,7 +6,7 @@ const sock = new zmq.Publisher
 sock.bind("tcp://127.0.0.1:3005")
 
 router.post('/web', function(req, res, next) {
-  console.log(req.body.path);
+  console.log(req.body);
   sock.send(['e2eW', JSON.stringify(req.body)]);
   res.send('Ok');
 });
