@@ -3,7 +3,6 @@ const child_process = require('child_process');
 
 async function run() {
   const sock = new zmq.Subscriber
-
   sock.connect("tcp://127.0.0.1:3005");
   sock.subscribe("MobileBDT");
 
@@ -11,7 +10,7 @@ async function run() {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     var workerProcess = child_process.exec('cd /home/jssosa10/uploads && calabash-android run '+ data.apk +' > ' + data.resultPath + data.app+'_'+data.version+'_bdt_'+ Date.now()+'.txt',  
+     var workerProcess = child_process.exec(`./runMBDT.sh ${data.name} ${data.version} ${data.key} ${data.device} > /home/uploads/${data.name}/run_${data.version}_${data.key}_${data.device}.log`,  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  

@@ -2,8 +2,8 @@ var express = require('express');
 const zmq = require("zeromq");
 var router = express.Router();
 
-const sock = new zmq.Publisher
-sock.bind("tcp://127.0.0.1:3000")
+const sock = new zmq.Publisher;
+sock.bind("tcp://127.0.0.1:3005")
 
 router.post('/web', function(req, res, next) {
   console.log(req.body.path);
@@ -11,7 +11,7 @@ router.post('/web', function(req, res, next) {
   res.send('Ok');
 });
 
-router.get('/mobile', function(req, res, next) {
+router.post('/mobile', function(req, res, next) {
   sock.send(['MobileBDT', JSON.stringify(req.body)]);
   res.send('Ok');
 });
