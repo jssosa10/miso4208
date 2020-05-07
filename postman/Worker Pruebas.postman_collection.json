@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "d70097fd-6e79-4787-b0b0-55fb34549e2c",
+		"name": "Worker Pruebas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9000/bdt/mobile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test\",\n     \"version\": \"v1\",\n     \"key\": \"305\",\n     \"device\": \"Nexus_5_API_26\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/bdt/mobile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"bdt",
+						"mobile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/bdt/web",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"App_Web\",\n     \"version\": \"v1\",\n     \"url\": \"http://localhost:2368/ghost/\",\n     \"browser\": \"firefox\",\n     \"key\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/bdt/web",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"bdt",
+						"web"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
