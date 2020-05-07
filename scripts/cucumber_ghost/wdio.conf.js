@@ -51,7 +51,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome',
+        browserName: 'VAR_BROWSER',
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -88,7 +88,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost:2368/ghost',
+    baseUrl: 'VAR_URL',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -197,8 +197,13 @@ exports.config = {
     /**
      * Runs after a Cucumber step
      */
-    // afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
-    // },
+     afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
+         const path = "/home/uploads/VAR_APP/VAR_VERSION/bdt/results";
+         const name  = uri;
+         console.log(browser);
+         const fileName = `${path}/${browser.capabilities.browserName}/VAR_KEY/images/${Date.now()}.png`;
+         browser.saveScreenshot(fileName)
+     },
     /**
      * Runs after a Cucumber scenario
      */

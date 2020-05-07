@@ -4,14 +4,14 @@ var {Then} = require('cucumber');
 var {expect} = require('chai');
 
 Given('I go to ghost home screen', () => {
-  browser.url('http://localhost:2368/ghost/');
+  browser.url('/');
   /*if($('button=Cerrar').isDisplayed()) {
     $('button=Cerrar').click();
   }*/
   });
 
 When('I open the login screen', () => {
-  browser.url('http://localhost:2368/ghost/#/signin');
+  browser.url('/#/signin');
   /*$('button=Ingresar').waitForExist(5000);
   $('button=Ingresar').waitForDisplayed(5000);
   $('button=Ingresar').click();*/
