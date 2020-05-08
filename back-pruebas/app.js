@@ -15,6 +15,7 @@ const estrategiasRouter = require('./routes/estrategias');
 const dispositivosRouter = require('./routes/dispositivos');
 const e2eRouter = require('./routes/e2e');
 const rtRouter = require('./routes/rt');
+const vrtRouter = require('./routes/vrt');
 const BDTRouter = require('./routes/bdt');
 const versionesRouter = require('./routes/versiones')
 const pruebasRouter = require('./routes/pruebas')
@@ -33,6 +34,7 @@ app.use('/upload', uploadRouter);
 app.use('/apps', appsRouter);
 app.use('/e2e', e2eRouter);
 app.use('/rt', rtRouter);
+app.use('/vrt', vrtRouter);
 app.use('/bdt', BDTRouter);
 app.use('/estrategias', estrategiasRouter);
 app.use('/dispositivos', dispositivosRouter);
