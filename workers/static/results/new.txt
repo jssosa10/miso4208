@@ -1,0 +1,1 @@
+Carpeta para guardar imagenes de resultado de regresion
