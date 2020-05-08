@@ -2,34 +2,68 @@ const zmq = require("zeromq");
 const resemble = require('resemblejs');
 const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
+const path = require('path');
 
 let db;
-MongoClient.connect('mongodb+srv://mongouser:w9mlvPJzQOMkmdlj@cluster0-uzowf.mongodb.net/visual_reg_taller', { useNewUrlParser: true }, (err, database) => {
-  if (err) return console.log(err);
+//MongoClient.connect('mongodb+srv://mongouser:w9mlvPJzQOMkmdlj@cluster0-uzowf.mongodb.net/visual_reg_taller', { useNewUrlParser: true }, (err, database) => {
+MongoClient.connect('mongodb+srv://angela:juanda2309@cluster0-4zsxc.mongodb.net/visual_reg_taller', { useNewUrlParser: true }, (err, database) => {
+  if (err) return console.log(err);  
   db = database.db('visual_reg_taller');
+  db.collection('visual_reg_taller').drop();
+  //db.visual_reg_taller.drop();
 });
 
 async function run() {
   const sock = new zmq.Subscriber
 
-  sock.connect("tcp://127.0.0.1:3006");
-  sock.subscribe("vrt");
+  sock.connect("tcp://127.0.0.1:3010");
+  sock.subscribe("vrtW");
 
   for await (const [topic, msg] of sock) {
      json = msg.toString();
-     data = JSON.parse(msg)
-     for (let x of data){
-         regression(x);
-     }
+     data = JSON.parse(msg);
+     console.log(data);
+     let direct1 =data['direct1'];
+     let direct2 =data['direct2'];
+//ruta para guardar imagenes
 
+     //consultar si hay imagenes en las carpetas 
+     if(fs.lstatSync(direct1).isDirectory()&&fs.lstatSync(direct2).isDirectory()){
+      
+      var files1 = fs.readdirSync(direct1);
+      var files2 = fs.readdirSync(direct2);   
+      var filep = files1.length>files2.length?files2:files1;
+      for (i = 0; i < filep.length; i++) {
+      //for (i = 0; i < 1; i++) {
+        let img=filep[i];
+        let vtest="";
+        if(img.indexOf(' -- ')>=0){
+          let vtest=(img.split(' -- '))[1];
+          console.log("test:::"+vtest);
+        } 
+        var img1 = path.join(direct1 + "\\"+img);
+        var img2 = path.join(direct2 + "\\"+img);
+        let datos = {
+          image1: img1,
+          image2: img2,
+          test: vtest
+        }
+        regression(datos);
+      }
+      console.log("termino regresion ok");
+      //regression(data);
+     }
+     
   }
 }
 
 
 const regression =(data) => {
-    let img1 = data['img1'];
-    let img1 = data['img2'];
+    let img1 =data['image1'];
+    let img2 =data['image2'];
 
+    console.log("image1::"+img1);
+    console.log("image2:"+img2);
   
     resemble(img1).compareTo(img2).ignoreLess()
     .onComplete((data) => {
@@ -40,10 +74,13 @@ const regression =(data) => {
         let rImg = currTime + "_result.png";
         let fpth = "./static/results/";
         let fpth2 = "/results/";
+        console.log("linea 72");
         fs.createReadStream(img1).pipe(fs.createWriteStream(fpth + nImg1));
         fs.createReadStream(img2).pipe(fs.createWriteStream(fpth + nImg2));
         fs.createReadStream("./output.png").pipe(fs.createWriteStream(fpth + rImg));
+        console.log("linea 76");
         let results = {
+          test: data['test'],
           date: currTime,
           image1: fpth2 + nImg1,
           image2: fpth2 + nImg2,
