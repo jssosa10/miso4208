@@ -10,7 +10,7 @@ async function run() {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     var workerProcess = child_process.exec(`./runMBDT.sh ${data.name} ${data.version} ${data.key} ${data.device} > /home/uploads/${data.name}/run_${data.version}_${data.key}_${data.device}.log`,  
+     var workerProcess = child_process.exec(`./runMBDT.sh ${data.name} ${data.version} ${data.key} ${data.device} ${data.port} ${data.test} > /home/uploads/${data.name}/run_${data.version}_${data.key}_${data.device}.log`,  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  

@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Test\",\n     \"version\": \"v1\",\n     \"key\": \"305\",\n     \"device\": \"Nexus_5_API_26\"\n}",
+					"raw": "{\n\t\"name\": \"App_Mobile\",\n     \"version\": \"v1\",\n     \"key\": \"305\",\n     \"device\": \"Nexus_5_API_26\",\n     \"port\": \"5555\",\n     \"test\": \"prueba1\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"App_Web\",\n     \"version\": \"v1\",\n     \"url\": \"http://localhost:2368/ghost/\",\n     \"browser\": \"firefox\",\n     \"key\":\"123456\"\n}",
+					"raw": "{\n\t\"name\": \"App_Web\",\n     \"version\": \"v1\",\n     \"url\": \"http://localhost:2368/ghost/\",\n     \"browser\": \"firefox\",\n     \"key\":\"123456\",\n     \"test\": \"prueba1\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,6 +58,122 @@
 					"path": [
 						"bdt",
 						"web"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/rt/mobile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"App_Mobile\",\n     \"version\": \"v1\",\n     \"key\": \"305\",\n     \"device\": \"Nexus_5_API_26\",\n     \"port\": \"5554\",\n     \"package\": \"org.quantumbadger.redreader\",\n     \"steps\": \"1000\",\n     \"seed\": \"157152873\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/rt/mobile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"rt",
+						"mobile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/e2e/web",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"App_Web\",\n     \"version\": \"v1\",\n     \"url\": \"http://localhost:2368/ghost/\",\n     \"browser\": \"chrome\",\n     \"key\":\"123456\",\n     \"test\": \"prueba1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/e2e/web",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"e2e",
+						"web"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/rt/web",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"App_Web\",\n     \"version\": \"v1\",\n     \"url\": \"http://localhost:2368/ghost/\",\n     \"browser\": \"chrome\",\n     \"key\":\"123456\",\n     \"test\": \"prueba1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/rt/web",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"rt",
+						"web"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/e2e/mobile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"App_Mobile\",\n     \"version\": \"v1\",\n     \"key\": \"305\",\n     \"device\": \"Pixel_2_API_26\",\n     \"port\": \"5554\",\n     \"repo\": \"https://github.com/codinguser/gnucash-android.git\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/e2e/mobile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"e2e",
+						"mobile"
 					]
 				}
 			},

@@ -4,14 +4,14 @@ const child_process = require('child_process');
 async function run() {
   const sock = new zmq.Subscriber
 
-  sock.connect("tcp://127.0.0.1:3006");
+  sock.connect("tcp://127.0.0.1:3007");
   sock.subscribe("RTW");
 
   for await (const [topic, msg] of sock) {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     var workerProcess = child_process.exec('cd /home/jssosa10/uploads && npx cypress run --spec "'+ data.app+'_'+data.version+'_rt.spec.js" > '+ data.resultPath + '_' + data.app+'_'+data.version+'_RT_'+ Date.now()+'.txt',  
+     var workerProcess = child_process.exec(`./runWRT.sh ${data.name} ${data.version} ${data.url} ${data.browser} ${data.key} ${data.test} > /home/uploads/${data.name}/run_rt_${data.test}_${data.version}_${data.browser}_${data.key}.log`,  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  

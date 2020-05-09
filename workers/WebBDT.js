@@ -11,7 +11,7 @@ async function run() {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     var workerProcess = child_process.exec(`./runWBDT.sh ${data.name} ${data.version} ${data.url} ${data.browser} ${data.key}> /home/uploads/${data.name}/run_${data.version}_${data.browser}_${data.key}.log`,  
+     var workerProcess = child_process.exec(`./runWBDT.sh ${data.name} ${data.version} ${data.url} ${data.browser} ${data.key} ${data.test}> /home/uploads/${data.name}/run_${data.version}_${data.browser}_${data.key}.log`,  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  

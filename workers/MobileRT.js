@@ -4,7 +4,7 @@ const child_process = require('child_process');
 async function run() {
   const sock = new zmq.Subscriber
 
-  sock.connect("tcp://127.0.0.1:3005");
+  sock.connect("tcp://127.0.0.1:3007");
   sock.subscribe("RTM");
 
   for await (const [topic, msg] of sock) {
@@ -14,7 +14,7 @@ async function run() {
      AppPackage = data.package;
      steps = data.steps;
      seed = data.seed;
-     var workerProcess = child_process.exec('cd /home/jssosa10/Android/Sdk/platform-tools && ./adb shell monkey -p ${AppPackage} -v ${steps} -s ${seed} > '+ data.resultPath + '_' + data.app+'_'+data.version+'_RT_'+ Date.now()+'.txt',  
+     var workerProcess = child_process.exec(`./runMRT.sh ${data.name} ${data.version} ${data.key} ${data.device} ${data.port} ${data.package} ${data.steps} ${data.seed}> /home/uploads/${data.name}/run_rt_${data.version}_${data.key}_${data.device}.log`,  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  

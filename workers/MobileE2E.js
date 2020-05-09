@@ -4,14 +4,14 @@ const child_process = require('child_process');
 async function run() {
   const sock = new zmq.Subscriber
 
-  sock.connect("tcp://127.0.0.1:3005");
+  sock.connect("tcp://127.0.0.1:3006");
   sock.subscribe("e2eM");
 
   for await (const [topic, msg] of sock) {
      json = msg.toString();
      data = JSON.parse(msg)
      console.log(data)
-     var workerProcess = child_process.exec('cd /home/uploads && git clone https://github.com/codinguser/gnucash-android.git gnucash-android'+ data.app+'_'+data.version+' &&  ./gradlew connectedAndroidTest > '+ data.app+'_'+data.version+'_mobileE2E_'+ Date.now()+'.txt',  
+     var workerProcess = child_process.exec(`./runME2E.sh ${data.name} ${data.version} ${data.key} ${data.device} ${data.port} ${data.repo} > /home/uploads/${data.name}/run_e2e_${data.version}_${data.key}_${data.device}.log`,  
      function (error, stdout, stderr) {  
          if (error) {  
             console.log(error.stack);  
