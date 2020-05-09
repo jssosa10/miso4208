@@ -13,7 +13,7 @@ router.post('/web', function(req, res, next) {
   res.send('Ok');
 });
 
-router.get('/mobile', function(req, res, next) {
+router.post('/mobile', function(req, res, next) {
   sock.send(['e2eM', JSON.stringify(req.body)]);
   res.send('Ok');
 });

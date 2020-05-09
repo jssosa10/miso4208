@@ -3,7 +3,7 @@ const zmq = require("zeromq");
 var router = express.Router();
 
 const sock = new zmq.Publisher
-sock.bind("tcp://127.0.0.1:3006")
+sock.bind("tcp://127.0.0.1:3007")
 
 router.post('/web', function(req, res, next) {
   console.log(req.body.path);
