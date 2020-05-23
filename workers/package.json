@@ -5,12 +5,14 @@
   "main": "WebE2E.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"node MobileE2E.js\" \"node MobileBDT.js\""
+    "start": "concurrently \"node MobileE2E.js\" \"node MobileBDT.js\" \"node MobileRT.js\" \"node WebE2E.js\" \"node WebBDT.js\" \"node WebRT.js\" \"node vrtWorker.js\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^5.2.0",
+    "mongodb": "^3.5.7",
+    "resemblejs": "^3.2.4",
     "zeromq": "^6.0.0-beta.6"
   }
 }
