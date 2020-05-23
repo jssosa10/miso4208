@@ -1,4 +1,24 @@
+const { generate } = require('multiple-cucumber-html-reporter');
+const { removeSync } = require('fs-extra');
 exports.config = {
+    onPrepare: () => {
+        // Remove the `.tmp/` folder that holds the json and report files
+        removeSync('.tmp/');
+      },
+      /**
+       * Gets executed after all workers got shut down and the process is about to exit.
+       */
+      onComplete: () => {
+        // Generate the report when it all tests are done
+        generate({
+          // Required
+          // This part needs to be the same path where you store the JSON files
+          // default = '.tmp/json/'
+          jsonDir: '.tmp/json/',
+          reportPath: '.tmp/report/',
+          // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+        });
+      },
     //
     // ====================
     // Runner Configuration
@@ -120,7 +140,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+    reporters: ['cucumberjs-json'],
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
